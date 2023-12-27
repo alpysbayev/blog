@@ -1,8 +1,10 @@
 // src/components/Register.js
 import React, { useState } from "react";
-import "./Register.css"; // Import the CSS file for styling
+import { useNavigate } from "react-router-dom";
+
 
 const Register = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -23,7 +25,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8080/api/users/register", {
+      const response = await fetch("http://localhost:8080/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -32,8 +34,8 @@ const Register = () => {
       });
 
       if (response.ok) {
+        navigate("/login");
         console.log("Registration successful!");
-        // Optionally, redirect the user to another page after successful registration.
       } else {
         console.error("Registration failed");
       }
@@ -43,60 +45,68 @@ const Register = () => {
   };
 
   return (
-    <div className="registration-container">
-      <h1>Registration</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username:
+    <div className="registration-container p-4 max-w-md mx-auto bg-lime-100 rounded-md shadow-md my-10">
+      <h1 className="text-2xl font-bold mb-4 flex justify-center">Registration</h1>
+      <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+        <label className="flex flex-col">
+          <span className="text-sm">Username:</span>
           <input
             type="text"
             name="username"
             value={formData.username}
             onChange={handleChange}
+            className="border p-2 rounded-md"
           />
         </label>
-        <br />
-        <label>
-          Password:
+
+        <label className="flex flex-col">
+          <span className="text-sm">Password:</span>
           <input
             type="password"
             name="password"
             value={formData.password}
             onChange={handleChange}
+            className="border p-2 rounded-md"
           />
         </label>
-        <br />
-        <label>
-          Confirm Password:
+
+        <label className="flex flex-col">
+          <span className="text-sm">Confirm Password:</span>
           <input
             type="password"
             name="confirm_password"
             value={formData.confirm_password}
             onChange={handleChange}
+            className="border p-2 rounded-md"
           />
         </label>
-        <br />
-        <label>
-          First Name:
+
+        <label className="flex flex-col">
+          <span className="text-sm">First Name:</span>
           <input
             type="text"
             name="firstname"
             value={formData.firstname}
             onChange={handleChange}
+            className="border p-2 rounded-md"
           />
         </label>
-        <br />
-        <label>
-          Last Name:
+
+        <label className="flex flex-col">
+          <span className="text-sm">Last Name:</span>
           <input
             type="text"
             name="lastname"
             value={formData.lastname}
             onChange={handleChange}
+            className="border p-2 rounded-md"
           />
         </label>
-        <br />
-        <button type="submit" className="register-btn">
+
+        <button
+          type="submit"
+          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue"
+        >
           Register
         </button>
       </form>

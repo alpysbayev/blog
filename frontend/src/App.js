@@ -7,19 +7,25 @@ import CreatePost from "./components/CreatePost";
 import PostDetails from "./components/PostDetails";
 import EditPost from "./components/EditPost";
 import Navbar from "./components/Navbar";
+import Login from "./components/Login";
+import Profile from "./components/Profile";
+import About from "./components/About";
 
 function App() {
+
   return (
     <Router>
       <div className="App">
-        <Navbar />
+        <Navbar/>
         <Routes>
           <Route path="/" element={<Posts />} />
           <Route path="/register" element={<Register />} />
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/post/:id" element={<PostDetails />} />
-          <Route path="/edit-post/:id" element={<EditPost />} />{" "}
-          {/* Add this route */}
+          <Route path="/edit-post/:id" element={<EditPost />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </div>
     </Router>

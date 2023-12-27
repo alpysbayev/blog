@@ -1,7 +1,6 @@
 // src/components/EditPost.js
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import './EditPost.css';
 
 const EditPost = () => {
   const { id } = useParams();
@@ -59,20 +58,37 @@ const EditPost = () => {
   };
 
   return (
-    <div className="edit-post-container">
-      <h1>Edit Post</h1>
-      <form className="edit-post-form" onSubmit={handleEdit}>
-        <label>
-          Title:
-          <input type="text" name="title" value={editData.title} onChange={handleChange} />
+    <div className="edit-post-container p-4 max-w-md mx-auto bg-lime-100 rounded-md shadow-md my-10">
+      <h1 className="text-2xl font-bold mb-4 flex justify-center">Edit Post</h1>
+      <form onSubmit={handleEdit} className="edit-post-form flex flex-col space-y-4">
+        <label className="flex flex-col">
+          <span className="text-sm">Title:</span>
+          <input
+            type="text"
+            name="title"
+            value={editData.title}
+            onChange={handleChange}
+            className="border p-2 rounded-md"
+          />
         </label>
-        <br />
-        <label>
-          Content:
-          <textarea name="content" value={editData.content} onChange={handleChange} />
+
+        <label className="flex flex-col">
+          <span className="text-sm">Content:</span>
+          <textarea
+            name="content"
+            value={editData.content}
+            onChange={handleChange}
+            className="border p-2 rounded-md"
+            rows="4"
+          />
         </label>
-        <br />
-        <button type="submit">Save Changes</button>
+
+        <button
+          type="submit"
+          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue"
+        >
+          Save Changes
+        </button>
       </form>
     </div>
   );

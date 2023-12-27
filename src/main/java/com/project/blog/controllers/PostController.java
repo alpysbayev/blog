@@ -1,11 +1,13 @@
 package com.project.blog.controllers;
 
 import com.project.blog.models.dtos.PostDTO;
+import com.project.blog.models.entities.UserEntity;
 import com.project.blog.services.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,8 +20,12 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping
-    public ResponseEntity<String> createPost(@RequestBody PostDTO dto) {
+    public ResponseEntity<String> createPost(
+            @AuthenticationPrincipal UserEntity userEntity,
+            @RequestBody PostDTO dto
+    ) {
         try {
+            dto.setAuthorUsername(userEntity.getUsername());
             postService.createPost(dto);
             return new ResponseEntity<>("Post created successfully", HttpStatus.CREATED);
         } catch (Exception e) {

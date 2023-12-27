@@ -1,6 +1,5 @@
 // src/components/CommentForm.js
 import React, { useState } from 'react';
-import './CommentForm.css';
 
 const CommentForm = ({ postId, onCommentSubmit }) => {
   const [commentContent, setCommentContent] = useState('');
@@ -10,8 +9,7 @@ const CommentForm = ({ postId, onCommentSubmit }) => {
 
     const newComment = {
       content: commentContent,
-      post_id: postId,
-      author_username: 'adilet', // You can set the default author here or retrieve it dynamically.
+      post_id: postId
     };
 
     // Call the onCommentSubmit prop to submit the comment to the parent component
@@ -22,18 +20,21 @@ const CommentForm = ({ postId, onCommentSubmit }) => {
   };
 
   return (
-    <form className="comment-form-container" onSubmit={handleCommentSubmit}>
-      <label className="comment-form-label">
+    <form className="comment-form-container p-4" onSubmit={handleCommentSubmit}>
+      <label className="block text-gray-800 font-semibold mb-2">
         Comment:
         <textarea
-          className="comment-form-textarea"
+          className="comment-form-textarea border border-gray-300 p-2 w-full rounded-md"
           name="content"
           value={commentContent}
           onChange={(e) => setCommentContent(e.target.value)}
+          rows="4"
         />
       </label>
-      <br />
-      <button type="submit" className="comment-form-button">
+      <button
+        type="submit"
+        className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue"
+      >
         Submit Comment
       </button>
     </form>

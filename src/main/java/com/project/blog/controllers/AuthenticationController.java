@@ -19,10 +19,10 @@ public class AuthenticationController {
     private final UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody UserDTO dto) {
+    public ResponseEntity<?> register(@RequestBody UserDTO dto) {
         try {
-            userService.register(dto);
-            return new ResponseEntity<>("User registered successfully", HttpStatus.CREATED);
+            JwtDTO jwt = userService.register(dto);
+            return new ResponseEntity<>(jwt, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }

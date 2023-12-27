@@ -1,11 +1,13 @@
 package com.project.blog.controllers;
 
 import com.project.blog.models.dtos.CommentDTO;
+import com.project.blog.models.entities.UserEntity;
 import com.project.blog.services.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,8 +22,12 @@ public class CommentController {
 
 
     @PostMapping
-    public ResponseEntity<String> createComment(@RequestBody CommentDTO dto) {
+    public ResponseEntity<String> createComment(
+            @AuthenticationPrincipal UserEntity userEntity,
+            @RequestBody CommentDTO dto
+    ) {
         try {
+            dto.setAuthorUsername(userEntity.getUsername());
             commentService.createComment(dto);
             return new ResponseEntity<>("Comment created successfully", HttpStatus.CREATED);
         } catch (Exception e) {
