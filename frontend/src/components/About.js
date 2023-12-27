@@ -5,8 +5,6 @@ const About = () => {
   const authors = [
     { id: 1, name: "Zhakypbekova Dilnaz", role: "Frontend Developer" },
     { id: 2, name: "Bibossyn Gumista", role: "Backend Developer" },
-    { id: 3, name: "Khasenov Yeldos", role: "Database Architecture" },
-    // Add more authors as needed
   ];
 
   return (
