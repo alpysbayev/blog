@@ -1,0 +1,31 @@
+/* src/components/EditPost.css */
+
+.edit-post-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .edit-post-form {
+    margin-top: 20px;
+  }
+  
+  .edit-post-form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .edit-post-form input,
+  .edit-post-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .edit-post-form button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  

@@ -1,0 +1,17 @@
+/* src/components/Comment.css */
+
+.comment-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .comment-content {
+    margin-bottom: 5px;
+  }
+  
+  .comment-meta {
+    font-style: italic;
+    color: #555;
+  }
+  

@@ -1,0 +1,30 @@
+/* src/components/PostDetails.css */
+
+.post-details-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.post-details-header {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+}
+
+.post-details-content {
+  margin-bottom: 20px;
+}
+
+.post-details-buttons {
+  margin-top: 10px;
+}
+
+.comment-section {
+  margin-top: 20px;
+}
+
+.comment-section h2 {
+  margin-bottom: 10px;
+}
+
+/* You can add more styles based on your design preferences */
